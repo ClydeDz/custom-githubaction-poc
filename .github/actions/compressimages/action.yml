@@ -19,5 +19,5 @@ runs:
     - run: ls
       shell: bash
     
-    - run: goodbye.sh ${{ inputs.passparamone }}
+    - run: ./goodbye.sh ${{ inputs.passparamone }}
       shell: bash
