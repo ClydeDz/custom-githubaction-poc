@@ -9,6 +9,6 @@ jobs:
 
       - uses: clydedz/custom-githubaction-poc/.github/actions/compressimages@main
         with:
-          passparamone: 'Mona the Octocat'
+          passparamone: 'Mona'
       
       - run: echo "$PATH"    
