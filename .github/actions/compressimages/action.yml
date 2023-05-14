@@ -14,6 +14,7 @@ runs:
       shell: bash
     
     - run: echo "$PATH"    
+      shell: bash
     
     - run: goodbye.sh ${{ inputs.passparamone }}
       shell: bash
