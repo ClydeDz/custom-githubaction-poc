@@ -23,7 +23,7 @@ runs:
     - name: run install
       shell: bash
       run: |
-        npm install --global imagemin-cli imagemin-gifsicle imagemin-mozjpeg imagemin-pngquant
+        npm install imagemin-cli imagemin-gifsicle imagemin-mozjpeg imagemin-pngquant --global --loglevel error
 
     - name: run compression
       shell: bash
