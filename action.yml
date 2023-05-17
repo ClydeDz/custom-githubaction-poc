@@ -10,6 +10,9 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - run: echo $HOME
+      shell: bash
+
     - name: Create package json
       shell: bash
       run: |
@@ -30,7 +33,7 @@ runs:
         }
         EOF
 
-    - name: Create package json
+    - name: Create shell script
       shell: bash
       run: |
         cat <<EOF > $HOME/goodbye.sh
@@ -50,7 +53,7 @@ runs:
     - run: npm install
       shell: bash
     
-    - run: chmod +x goodbye.sh
+    - run: sudo chmod +x goodbye.sh
       shell: bash
 
     - run: ./goodbye.sh ${{ inputs.passparamone }}
