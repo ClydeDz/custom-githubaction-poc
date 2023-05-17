@@ -37,4 +37,11 @@ runs:
 
     - name: fefe
       shell: bash
-      run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+      run: echo du -hs ${{ inputs.outputDirectory }} --apparent-size | cut -d$'\t' -f 1
+
+    - name: Group of log lines
+      shell: bash
+      run: |
+          echo "::group::My title"
+          echo du -hs ${{ inputs.outputDirectory }} --apparent-size | cut -d$'\t' -f 1
+          echo "::endgroup::"
