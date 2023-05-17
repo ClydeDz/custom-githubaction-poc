@@ -37,11 +37,14 @@ runs:
 
     - name: fefe
       shell: bash
-      run: echo du -hs ${{ inputs.outputDirectory }} --apparent-size | cut -d$'\t' -f 1
+      run: |
+        myPi=du -hs ${{ inputs.outputDirectory }} --apparent-size | cut -d$'\t' -f 1
+        echo $myPi 
 
     - name: Group of log lines
       shell: bash
       run: |
           echo "::group::My title"
-          echo du -hs ${{ inputs.outputDirectory }} --apparent-size | cut -d$'\t' -f 1
+          myPie=du -hs ${{ inputs.outputDirectory }} --apparent-size | cut -d$'\t' -f 1
+          echo $myPie
           echo "::endgroup::"
