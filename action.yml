@@ -33,28 +33,26 @@ runs:
         }
         EOF
 
-    - name: Create shell script
-      shell: bash
-      run: |
-        cat <<EOF > $HOME/goodbye.sh
-        echo "First arg: $1"
-        npm run help -- --help
-        EOF
+    # - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+    #   shell: bash
 
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
-
-    - run: ls
-      shell: bash
+    # - run: ls
+    #   shell: bash
     
-    - run: dir
-      shell: bash
+    # - run: dir
+    #   shell: bash
     
     - run: npm install
       shell: bash
     
-    - run: sudo chmod +x ./goodbye.sh
+    - name: run shell script
       shell: bash
+      run: |
+        echo "First arg"
+        npm run help -- --help
+    
+    # - run: sudo chmod +x ./goodbye.sh
+    #   shell: bash
 
-    - run: ./goodbye.sh ${{ inputs.passparamone }}
-      shell: bash
+    # - run: ./goodbye.sh ${{ inputs.passparamone }}
+    #   shell: bash
