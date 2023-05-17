@@ -48,7 +48,7 @@ runs:
     - name: run shell script
       shell: bash
       run: |
-        echo "First arg"
+        echo "First arg: ${{ inputs.passparamone }}"
         npm run help -- --help
     
     # - run: sudo chmod +x ./goodbye.sh
