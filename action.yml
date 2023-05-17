@@ -25,7 +25,8 @@ runs:
           "author": "Clyde D'Souza",
           "scripts": {
             "help": "imagemin",
-            "go": "imagemin"
+            "go1": "imagemin",
+            "go": "imagemin public/* --out-dir=dist --plugin.mozjpeg.quality=40 --plugin.gifsicle.optimizationLevel=3 --plugin.pngquant.quality=0.4 --plugin.pngquant.quality=0.6"
           },
           "devDependencies": {
             "imagemin-cli": "^7.0.0",
@@ -52,7 +53,7 @@ runs:
       shell: bash
       run: |
         echo "First arg: ${{ inputs.passparamone }}"
-        npm run go -- public/** --out-dir=dist --plugin.mozjpeg.quality=40 --plugin.gifsicle.optimizationLevel=3 --plugin.pngquant.quality=0.4 --plugin.pngquant.quality=0.6
+        npm run go
     
     # - run: sudo chmod +x ./goodbye.sh
     #   shell: bash
