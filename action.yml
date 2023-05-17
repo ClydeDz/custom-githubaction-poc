@@ -15,40 +15,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # - name: Create package json
-    #   shell: bash
-    #   run: |
-    #     cat <<EOF > $HOME/package.json
-    #     {
-    #       "name": "compressimages",
-    #       "version": "0.0.1",
-    #       "author": "Clyde D'Souza",
-    #       "scripts": {
-    #         "help": "imagemin",
-    #         "go1": "imagemin",
-    #         "go": "imagemin public/* --out-dir=dist --plugin.mozjpeg.quality=40 --plugin.gifsicle.optimizationLevel=3 --plugin.pngquant.quality=0.4 --plugin.pngquant.quality=0.6"
-    #       },
-    #       "devDependencies": {
-    #         "imagemin-cli": "^7.0.0",
-    #         "imagemin-gifsicle": "^7.0.0",
-    #         "imagemin-mozjpeg": "^10.0.0",
-    #         "imagemin-pngquant": "^9.0.2"
-    #       }
-    #     }
-    #     EOF
-
-    # - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-    #   shell: bash
-
-    # - run: ls
-    #   shell: bash
-    
-    # - run: dir
-    #   shell: bash
-    
-    # - run: npm install
-    #   shell: bash
-
     - name: run install
       shell: bash
       run: |
@@ -57,21 +23,4 @@ runs:
     - name: run compression
       shell: bash
       run: |
-        imagemin public/* --out-dir=dist --plugin.mozjpeg.quality=40 --plugin.gifsicle.optimizationLevel=3 --plugin.pngquant.quality=0.4 --plugin.pngquant.quality=0.6
-   
-
-    # - name: run shell script
-    #   shell: bash
-    #   run: |
-    #     echo "First arg: ${{ inputs.passparamone }}"
-    #     shopt -s globstar
-    #     for file in public/**; 
-    #     do npm run go1 -- $file --out-dir=dist --plugin.mozjpeg.quality=40 --plugin.gifsicle.optimizationLevel=3 --plugin.pngquant.quality=0.4 --plugin.pngquant.quality=0.6; done        
-    
-    # npm run go1 -- $file --out-dir=dist --plugin.mozjpeg.quality=40 --plugin.gifsicle.optimizationLevel=3 --plugin.pngquant.quality=0.4 --plugin.pngquant.quality=0.6"
-    # done
-    # - run: sudo chmod +x ./goodbye.sh
-    #   shell: bash
-
-    # - run: ./goodbye.sh ${{ inputs.passparamone }}
-    #   shell: bash
+        imagemin ${{ inputs.inputDir }} --out-dir=dist --plugin.mozjpeg.quality=40 --plugin.gifsicle.optimizationLevel=3 --plugin.pngquant.quality=0.4 --plugin.pngquant.quality=0.6
