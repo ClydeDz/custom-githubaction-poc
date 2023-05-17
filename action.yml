@@ -10,6 +10,32 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Create package json
+      run: |
+        cat <<EOF > $HOME/package.json
+        {
+          "name": "compressimages",
+          "version": "0.0.1",
+          "author": "Clyde D'Souza",
+          "scripts": {
+            "help": "imagemin"
+          },
+          "devDependencies": {
+            "imagemin-cli": "^7.0.0",
+            "imagemin-gifsicle": "^7.0.0",
+            "imagemin-mozjpeg": "^10.0.0",
+            "imagemin-pngquant": "^9.0.2"
+          }
+        }
+        EOF
+
+    - name: Create package json
+      run: |
+        cat <<EOF > $HOME/goodbye.sh
+        echo "First arg: $1"
+        npm run help -- --help
+        EOF
+
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
 
@@ -19,10 +45,7 @@ runs:
     - run: dir
       shell: bash
     
-    - run: npm ci
-      shell: bash   
-
-    - run: ls
+    - run: npm install
       shell: bash
     
     - run: chmod +x goodbye.sh
