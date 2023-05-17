@@ -53,7 +53,7 @@ runs:
     - run: npm install
       shell: bash
     
-    - run: sudo chmod +x goodbye.sh
+    - run: sudo chmod +x ./goodbye.sh
       shell: bash
 
     - run: ./goodbye.sh ${{ inputs.passparamone }}
